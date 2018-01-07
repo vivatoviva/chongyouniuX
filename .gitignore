@@ -1,0 +1,7 @@
+/node_modules
+/assets
+/public
+/.sass-cache
+./npm-debug.log
+.DS_Store
+/.idea
