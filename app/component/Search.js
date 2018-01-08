@@ -260,11 +260,14 @@ class Input extends Component{
             }
         }
     }
-    handBlur(){
-        this.setState({
-            index:-1,   
-            display:false
-        })
+    handBlur(e){
+        //延迟刷新执行，为后面handTipClick执行提供数据（轮询机制）
+        setTimeout(() => {
+            this.setState({
+                index:-1,   
+                display:false
+            });
+        }, 100);
     }
     render(){
         let style={};

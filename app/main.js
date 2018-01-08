@@ -8,3 +8,5 @@ import './css/index.css'
 
 import './component/Head';
 import './component/Search'
+import './component/HotNav'
+import './component/Nav'
