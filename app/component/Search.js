@@ -12,8 +12,8 @@ let data = [
                 link:"https://www.baidu.com/s?wd="
             },
             {
-                name:"谷歌",
-                link:"https://www.google.com/#q=",
+                name:"谷歌镜像",
+                link:"https://9shi.ml/search?q=",
             },
             {
                 name:"必应",
