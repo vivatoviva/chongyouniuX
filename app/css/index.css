@@ -180,6 +180,7 @@ section{
     background-repeat: no-repeat;
     background-size: 15px;
     background-position: 8px center;
+    position: relative;
 }
 .tag ul li + li{
     cursor: pointer;
@@ -254,3 +255,85 @@ section{
     color: #fff;
 }
 
+/*
+    footer部分样式
+*/
+footer{
+    background-color: #353535;
+    margin-top:30px;
+}
+footer>div{
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+footer div div:nth-of-type(1){
+    width:500px;
+    float: left;
+}
+footer div div:nth-of-type(2){
+    width: 100px;
+    float: left;
+}
+footer div div:nth-of-type(3){
+    width: 100px;
+    float: left;
+}
+footer>div div p{
+    font-size: 14px;
+    color: #bebdbd;
+}
+footer div div ul{
+    margin-top:20px;
+    overflow: hidden;
+}
+footer div div ul li{
+    float: left;
+    padding-right: 20px;
+    line-height: 20px;
+    min-width: 60px;;
+}
+footer div div ul li a{
+    text-decoration: none;
+    color: #888;
+    font-size: 12px;
+}
+footer div div+div{
+    border-left: 1px solid rgb(71, 71, 71);
+    padding-left: 40px;
+}
+footer div img{
+    width:200px;
+    float: left
+}
+
+
+/*
+    slider部分样式
+*/
+#slider{
+    position: fixed;
+    left: 50%;
+    top: 185px;
+    margin-left: 512px;
+    border: 1px solid #ECECEC;
+    background-color: #fff;
+}
+#slider div div{
+    padding-left: 10px;
+    padding-right: 15px;
+    line-height: 30px;
+    text-indent: 25px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: 50ms ease all;
+}
+#slider div div + div{
+    border-top:  1px solid #ECECEC;
+}
+#slider div div:hover{
+    background-color: #E54348;
+    color: #fff;
+}

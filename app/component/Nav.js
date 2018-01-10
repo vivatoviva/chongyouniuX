@@ -7,6 +7,7 @@ import {
 
 const data = {
     tagName: '影视欣赏',
+    id:'a01',
     tagImgSrc:'https://i.loli.net/2018/01/09/5a54b7b52dd89.png',
     tags: [{
             tagName: '最新影视',
@@ -410,12 +411,12 @@ class Tag extends Component{
                         this.props.data.map((data,index)=>{
                             style={};
                             if(index==0){
-                                style={backgroundImage:`url(${data.tagImgSrc}`}
+                                style={backgroundImage:`url(${data.tagImgSrc}`};
                             }
                             if(index==this.props.index+1){
                                 style.color="red";
                             }
-                            return <li  key={data.tagName} data-key={index} style={style} onClick={this.handClick}>{data.tagName}</li>
+                            return <li id={data.tagId} key={data.tagName} data-key={index} style={style} onClick={this.handClick}>{data.tagName}</li>
                         })
                     }
                 </ul>  
@@ -509,13 +510,12 @@ class Nav extends Component{
     }
     render(){
         const tagData=[];
-        tagData.push({tagName:this.props.data.tagName,tagImgSrc:this.props.data.tagImgSrc});
+        tagData.push({tagName:this.props.data.tagName,tagImgSrc:this.props.data.tagImgSrc,tagId:this.props.data.id});
         this.props.data.tags.map(data=>{
             tagData.push({tagName:data.tagName})
         })
         return (
             <div>
-                
                 <Tag data={tagData} handIndex={this.handIndex} index={this.state.index}></Tag>
                 <Site tags={this.props.data.tags[this.state.index]}></Site>
             </div>
@@ -526,30 +526,37 @@ render(
     <Nav data={data} />,
     document.getElementById('custom-nav')
 )
+data.id="a02"
 render(
     <Nav data={data} />,
     document.getElementById('life-nav')
 )
+data.id="a03"
 render(
     <Nav data={data} />,
     document.getElementById('movies-nav')
 )
+data.id="a04"
 render(
     <Nav data={data} />,
     document.getElementById('res-nav')
 )
+data.id="a05"
 render(
     <Nav data={data} />,
     document.getElementById('soft-nav')
 )
+data.id="a06"
 render(
     <Nav data={data} />,
     document.getElementById('music-nav')
 )
+data.id="a07"
 render(
     <Nav data={data} />,
     document.getElementById('study-nav')
 )
+data.id="a08"
 render(
     <Nav data={data} />,
     document.getElementById('music-nav')

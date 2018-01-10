@@ -10,3 +10,5 @@ import './component/Head';
 import './component/Search'
 import './component/HotNav'
 import './component/Nav'
+import './component/Foot'
+import './component/Slider.jsx'
