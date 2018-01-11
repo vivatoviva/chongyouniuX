@@ -337,3 +337,31 @@ footer div img{
     background-color: #E54348;
     color: #fff;
 }
+
+/*
+    modal部分样式
+*/
+#modal{
+    position: relative;
+    z-index: 151645465;
+}
+#modal>div{
+        background-color: rgba(0, 0, 0, 0.452);
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+.form{
+    width: 900px;
+    height: 400px;
+    background-color: #fff;
+    box-shadow: 0px 0px 15px rgb(146, 146, 146);
+    border-radius: 5px;
+    line-height: 400px;
+    text-align: center;
+}

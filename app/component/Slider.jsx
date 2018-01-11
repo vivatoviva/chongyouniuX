@@ -1,5 +1,5 @@
 import React,{Component}from "react";
-import {render} from 'react-dom';
+import ReactDom,{render} from 'react-dom';
 
 //导航资料
 const Location = [
@@ -92,11 +92,43 @@ const Location = [
         type:'eject'
     }
 ];
-
+const modal = document.getElementById('modal');
+//将一个组件渲染成页面中间
+class Eject extends Component{
+    constructor(props){
+        super(props);
+        this.el = document.createElement('div');
+        this.el.addEventListener('click',(e)=>{
+            console.log(e.target);
+            const node = e.target;
+            //使用这个处理事件冒泡，react的事件处理机制一点都不熟悉呀
+            if(node.children.length!=0){
+                 this.props.hand(false);
+            }
+        })
+    }
+    render(){
+        return ReactDom.createPortal(
+            this.props.children,
+            this.el
+        )
+    }
+    componentDidMount() {
+        modal.appendChild(this.el);
+    }
+    componentWillUnmount() {
+        modal.removeChild(this.el);
+       
+    }
+}
 class LocationButton extends Component{
     constructor(props){
         super(props);
+        this.state={
+            showEject:false
+        }
         this.handLacttionClick=this.handLacttionClick.bind(this);
+        this.handEjectClick=this.handEjectClick.bind(this);
     }
     handLacttionClick(e){
         const id = e.target.getAttribute("data-id");
@@ -106,7 +138,7 @@ class LocationButton extends Component{
             var tim = null;
             let distance=0;
             let now=Math.floor(document.documentElement.scrollTop);
-            let speed=15;
+            let speed=10;
             clearInterval(tim);
             tim=setInterval(()=>{
                 distance=((now-target)/speed)>0?Math.ceil(((now-target)/speed)):Math.floor(((now-target)/speed));
@@ -121,19 +153,32 @@ class LocationButton extends Component{
                 console.log('没有此ID'+id)
            }
     }
+    handEjectClick(bol=true){
+        this.setState({
+            showEject:bol
+        })
+    }
     render(){
         const style={
         };
         let click="";
         const now = this;
+        //自己模板要加的内容
+        const eject = this.state.showEject?(
+            <Eject hand={this.handEjectClick}>
+                <div className="form">hah</div>
+            </Eject>
+        ):null;
         const {id,name,type,bgimg,hoverimg}=this.props.link;
+        //定位标签
         if(type=="location"){
             return (
                 <div data-id={id} onClick={this.handLacttionClick}>{name}</div>
             )
+            //弹出层标签
         }else if(type=="eject"){
             return (
-                <div data-id={id}>{name}</div>
+                <div data-id={id} onClick={this.handEjectClick}>{name}{eject}</div>
             )
         }
     }
