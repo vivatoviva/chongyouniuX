@@ -21,7 +21,7 @@ let data = [
             },
             {
                 name:"知乎",
-                link:"http://zhihu.sogou.com/zhihu?query="
+                link:"https://www.zhihu.com/search?type=content&q="
             },
             {
                 name:"搜狗",

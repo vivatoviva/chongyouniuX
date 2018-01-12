@@ -184,7 +184,21 @@ class LocationButton extends Component{
     }
 }
 class Slider extends Component{
+    constructor(props){
+        super(props);
+        window.onscroll = ()=>{
+            console.log(Math.ceil(document.documentElement.scrollTop))
+             if(Math.ceil(document.documentElement.scrollTop)>1383){
+                document.getElementById("slider").style.position="absolute";
+                document.getElementById("slider").style.top="1565px";
+             }else{
+                document.getElementById("slider").style.position="fixed";
+                document.getElementById("slider").style.top="185px";
+             }
+        }
+    }
     render(){
+        
         return (
                 <div>
                     {

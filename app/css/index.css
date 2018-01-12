@@ -22,6 +22,7 @@ body {
 #search{
     position: relative;
     z-index: 100;
+    border-bottom: 1px solid rgb(226, 226, 226);
 }
 #search>div{
     width:1000px;
@@ -313,7 +314,7 @@ footer div img{
     slider部分样式
 */
 #slider{
-    position: fixed;
+    position: fixed;    
     left: 50%;
     top: 185px;
     margin-left: 512px;
