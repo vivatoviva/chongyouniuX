@@ -166,16 +166,28 @@ let data = [
         ]
     },
     {
-        name:"神奇",
+        name:"课程",
         desc:'搜索你想要的网页吧',
         link:[
             {
-                name:"神奇",
-                link:"www.baidu.con"
+                name:"慕课网",
+                link:"https://www.imooc.com/search/?words="
             },
             {
-                name:"baidu",
-                link:"adas"
+                name:"MooC",
+                link:"https://www.icourse163.org/search.htm?search="
+            },
+            {
+                name:"网易云课堂",
+                link:"http://study.163.com/courses-search?keyword="
+            },
+            {
+                name:"实验楼",
+                link:"https://www.shiyanlou.com/search?search="
+            },
+            {
+                name:'网易公开课',
+                link:'https://c.open.163.com/search/search.htm?query='
             }
         ]
     }

@@ -109,7 +109,7 @@ class Head extends Component{
     }
     render(){
         return  <this.Div>
-            <Topleft data={{categories:[{href:"http://",name:"博客"},{href:"http://",name:"家乡"},{href:"http://",name:"中文"},{href:"http://",name:"关于我们"}]}}/>
+            <Topleft data={{categories:[{href:"http://blogoog.com",name:"博客"},{href:"http://",name:"家乡"},{href:"http://",name:"中文"},{href:"http://",name:"关于我们"}]}}/>
             <Topright />
             </this.Div>;
     }
