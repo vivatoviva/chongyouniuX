@@ -1,6 +1,6 @@
 import React,{Component}from "react";
 import {render} from 'react-dom';
-
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 
 let data = [
     {
@@ -60,72 +60,108 @@ let data = [
         ]
     },
     {
-        name:"学术",
-        desc:'恩恩，你想知道点什么呐？  ',
+        name:"网盘",
+        desc:'你想要的这里都有 ',
         link:[
             {
-                name:"guge",
-                link:""
+                name:"58网盘",
+                link:"http://www.58wangpan.com/search/kw"
             },
             {
-                name:"baidu",
-                link:"adas"
-            }
-        ]
-    },
-    {
-        name:"BT种子",
-        desc:'搜索你想要的网页吧',
-        link:[
-            {
-                name:"guge",
-                link:""
+                name:"去转盘",
+                link:"http://www.quzhuanpan.com/source/search.action?q="
             },
             {
-                name:"baidu",
-                link:"adas"
+                name:'特百度',
+                link:'https://www.ttyunsou.com/s?keyword='
             }
         ]
     },
     {
         name:"软件",
-        desc:'搜索你想要的网页吧',
+        desc:'下面目录推荐软件，可以试试',
         link:[
             {
-                name:"guge",
-                link:""
+                name:"胡萝卜周",
+                link:"http://www.carrotchou.blog/?s="
             },
             {
-                name:"baidu",
-                link:"adas"
+                name:'吾爱破解',
+                link:'http://zhannei.baidu.com/cse/search?click=1&s=14525262514411293706&isNeedCheckDomain=1&jump=1&q='
+            },
+            {
+                name:'百度软件中心',
+                link:'http://rj.baidu.com/search/index/?kw='
+            },
+            {
+                name:"pc6",
+                link:"https://s.pc6.com/cse/search?s=12026392560237532321&q="
+            },
+            {
+                name:"下载吧",
+                link:"http://zhannei.baidu.com/cse/search?s=9035802123405734980&q="
+            }
+        ]
+    },
+    {
+        name:"学术",
+        desc:'',
+        link:[
+            {
+                name:"中国学术",
+                link:"http://www.sciinfo.cn/Result.aspx?c=1&q=神帝&t=1&l=allLan&sq="
+            },
+            {
+                name:"golo学术",
+                link:"https://xs.glgoo.net/scholar?hl=zh-CN&q="
+            },
+            {
+                name:"必应学术",
+                link:"https://www.bing.com/academic/search?q="
+            },
+            {
+                name:"谷歌学术",
+                link:"https://xs.glgoo.net/scholar?hl=zh-CN&q="
             }
         ]
     },
     {
         name:"音乐",
-        desc:'搜索你想要的网页吧',
+        desc:'动听的音乐可以陶冶情操',
         link:[
             {
-                name:"guge",
-                link:""
+                name:"网易云",
+                link:"http://music.163.com/#/search/m/?s="
             },
             {
-                name:"baidu",
-                link:"adas"
+                name:"QQ音乐",
+                link:"https://y.qq.com/portal/search.html#page=1&searchid=1&remoteplace=txt.yqq.top&t=song&w="
+            },
+            {
+                name:'音悦台',
+                link:'http://so.yinyuetai.com/?keyword='
+            },
+            {
+                name:'酷狗',
+                link:'http://www.kugou.com/yy/html/search.html#searchType=song&searchKeyWord='
             }
         ]
     },
     {
-        name:"电影",
+        name:"电子书",
         desc:'搜索你想要的网页吧',
         link:[
             {
-                name:"guge",
-                link:""
+                name:"Gitbook",
+                link:"https://www.gitbook.com/search?q="
             },
             {
-                name:"baidu",
-                link:"adas"
+                name:"鸠摩搜书",
+                link:"https://www.jiumodiary.com/?"
+            },
+            {
+                name:'笔趣阁',
+                link:'https://www.qu.la/book/14721/?keyword='
             }
         ]
     },

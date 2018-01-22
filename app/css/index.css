@@ -366,3 +366,21 @@ footer div img{
     line-height: 400px;
     text-align: center;
 }
+
+/**
+    测试动画部分
+*/
+ .ceshi-enter{
+    opacity: 0.01;
+}
+.ceshi-enter.ceshi-enter-active{
+    opacity: 1;
+    transition: opacity 500ms ease;
+}
+.ceshi-leave{
+    opacity: 1;
+}
+.ceshi-leave.fade-leave-active{
+    opacity: 0.01;
+    transition: opacity 500ms ease;
+}

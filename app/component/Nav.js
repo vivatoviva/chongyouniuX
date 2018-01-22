@@ -1,9 +1,6 @@
-import React, {
-    Component
-} from "react";
-import {
-    render
-} from 'react-dom';
+import React, { Component } from "react";
+import { render } from 'react-dom';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 
 const data = {
     tagName: '影视欣赏',
@@ -391,6 +388,7 @@ const data = {
         }
     ]
 }
+
 class Tag extends Component{
     constructor(props){
         super(props);
@@ -478,21 +476,27 @@ class Site extends Component{
             {  
                 !tags.length?"":(<SiteTag tags={tags} index={this.state.index}  handIndex={this.handIndex}></SiteTag>)
             }
-            <ul className="clearfix">
-                {   
-                    links.map((data,index)=>{
-                        className="";
-                        if(data.like){
-                            className="like";
-                        }
-                        if(data.import){
-                            className+=" import"
-                        }
-                        return <li key={index}><a className={className} 
-                               href={data.site}>{data.name}</a></li>
-                    })
-                }
-            </ul>
+            
+                <ul className="clearfix">
+                <CSSTransitionGroup 
+                transitionName="ceshi"
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={200}>
+                    {   
+                        links.map((data,index)=>{
+                            className="";
+                            if(data.like){
+                                className+=" like";
+                            }
+                            if(data.import){
+                                className+=" import"
+                            }
+                            return <li key={index}><a className={className}
+                                href={data.site}>{data.name}</a></li>
+                        })
+                    }
+                </CSSTransitionGroup>
+                </ul>
             </div>
         )
     }
@@ -522,44 +526,50 @@ class Nav extends Component{
         )
     }
 }
+
+ const data1 = require('../sitedata/data1');
 render(
-    <Nav data={data} />,
+    <Nav data={data1.default} />,
     document.getElementById('custom-nav')
 )
-data.id="a02"
+const data2 = require('../sitedata/data2');
 render(
-    <Nav data={data} />,
+    <Nav data={data2.default} />,
     document.getElementById('life-nav')
 )
-data.id="a03"
+const data3 = require('../sitedata/data3');
 render(
-    <Nav data={data} />,
+    <Nav data={data3.default} />,
     document.getElementById('movies-nav')
 )
-data.id="a04"
+const data4 = require('../sitedata/data4');
 render(
-    <Nav data={data} />,
+    <Nav data={data4.default} />,
     document.getElementById('res-nav')
 )
-data.id="a05"
+const data5 = require('../sitedata/data5');
 render(
-    <Nav data={data} />,
+    <Nav data={data5.default} />,
     document.getElementById('soft-nav')
 )
-data.id="a06"
+const data6 = require('../sitedata/data6');
 render(
-    <Nav data={data} />,
+    <Nav data={data6.default} />,
     document.getElementById('music-nav')
 )
-data.id="a07"
+const data7 = require('../sitedata/data7');
 render(
-    <Nav data={data} />,
+    <Nav data={data7.default} />,
     document.getElementById('study-nav')
 )
-data.id="a08"
+const data8 = require('../sitedata/data8');
 render(
-    <Nav data={data} />,
+    <Nav data={data8.default} />,
     document.getElementById('music-nav')
 )
-
+const data9 = require('../sitedata/data9');
+render(
+    <Nav data={data9.default} />,
+    document.getElementById('bigdata-nav')
+)
 

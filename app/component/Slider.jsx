@@ -1,5 +1,6 @@
 import React,{Component}from "react";
 import ReactDom,{render} from 'react-dom';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 
 //导航资料
 const Location = [
@@ -165,9 +166,13 @@ class LocationButton extends Component{
         const now = this;
         //自己模板要加的内容
         const eject = this.state.showEject?(
-            <Eject hand={this.handEjectClick}>
-                <div className="form">hah</div>
-            </Eject>
+            <CSSTransitionGroup
+                
+            >
+                <Eject hand={this.handEjectClick}>
+                    <div className="form">hah</div>
+                </Eject>
+            </CSSTransitionGroup>
         ):null;
         const {id,name,type,bgimg,hoverimg}=this.props.link;
         //定位标签
@@ -214,3 +219,5 @@ render(
     <Slider data={Location}/>,
     document.getElementById('slider')
 )
+
+
