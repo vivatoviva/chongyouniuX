@@ -1,7 +1,7 @@
 let data = {
-	"tagName": " 音乐",
+	"tagName": " 音乐MV",
 	"id": "a07",
-	"tagImgSrc": "",
+	"tagImgSrc": "http://oquq74tfk.bkt.clouddn.com/18-1-22/66751576.jpg",
 	"tags": [{
 		"tagName": "在线音乐",
 		"link": [{

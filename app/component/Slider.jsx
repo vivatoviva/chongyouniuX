@@ -6,90 +6,83 @@ import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 const Location = [
     {
         name:'搜本站',
-        bgimg:'',
-        hoverimg:'',
+        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/93889582.jpg',
+        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/93889582.jpg',
         type:'eject'
     },
     {
-        name:'自定义',
+        name:'生活',
         id:'a01',
-        bgimg:'ssadas',
-        hoverimg:'sadsad',
+        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/83954840.jpg',
+        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/83954840.jpg',
         type:'location'
     },
     {
-        name:'生活',
+        name:'影视',
         id:'a02',
-        bgimg:'',
-        hoverimg:'',
+        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/97521614.jpg',
+        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/6332105.jpg',
         type:'location'    
     },
     {
-        name:'影视',
-        bgimg:'',
-        id:'a03',
-        hoverimg:'',
-        type:'location'  
-    },
-    {
         name:'资源',
-        id:'a04',
-        bgimg:'',
-        hoverimg:'',
+        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/73244261.jpg',
+        id:'a03',
+        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/73244261.jpg',
         type:'location'  
     },
     {
         name:'软件',
-        id:'a05',
-        bgimg:'',
-        hoverimg:'',
+        id:'a04',
+        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/12223540.jpg',
+        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/12223540.jpg',
         type:'location'  
     },
     {
         name:'模板',
-        id:'a06',
-        bgimg:'',
-        hoverimg:'',
-        type:'location'   
-    },
-    {
-        name:'读物',
-        id:'a07',
-        bgimg:'',
-        hoverimg:'',
-        type:'location'    
-    },
-    {
-        name:'音乐',
-        id:'a08',
-        bgimg:'',
-        hoverimg:'',
+        id:'a05',
+        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/16869405.jpg',
+        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/16869405.jpg',
         type:'location'  
     },
     {
-        name:'学习',
-        id:'a09',
-        bgimg:'',
-        hoverimg:'',
+        name:'读物',
+        id:'a06',
+        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/67913173.jpg',
+        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/67913173.jpg',
         type:'location'   
     },
     {
+        name:'音乐',
+        id:'a07',
+        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/25387805.jpg',
+        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/25387805.jpg',
+        type:'location'    
+    },
+    {
+        name:'学习',
+        id:'a08',
+        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/38882213.jpg',
+        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/38882213.jpg',
+        type:'location'  
+    },
+    {
         name:'导航',
-        id:'a10',
-        bgimg:'',
-        hoverimg:'',
+        id:'a09',
+        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/80021391.jpg',
+        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/80021391.jpg',
         type:'location'   
     },
     {
         name:'关于',
-        bgimg:'',
-        hoverimg:'',
+        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/15951409.jpg',
+        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/15951409.jpg',
         type:'eject'
     },
     {
         name:'留言',
-        bgimg:'',
-        hoverimg:'',
+        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/25033702.jpg',
+        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/25033702.jpg',
         type:'eject'
     }
 ];
@@ -178,12 +171,12 @@ class LocationButton extends Component{
         //定位标签
         if(type=="location"){
             return (
-                <div data-id={id} onClick={this.handLacttionClick}>{name}</div>
+                <div data-id={id} onClick={this.handLacttionClick} style={{backgroundImage:`url(${bgimg})`}}>{name}</div>
             )
             //弹出层标签
         }else if(type=="eject"){
             return (
-                <div data-id={id} onClick={this.handEjectClick}>{name}{eject}</div>
+                <div data-id={id} onClick={this.handEjectClick}  style={{backgroundImage:`url(${bgimg})`}}>{name}{eject}</div>
             )
         }
     }
@@ -192,13 +185,17 @@ class Slider extends Component{
     constructor(props){
         super(props);
         window.onscroll = ()=>{
-            console.log(Math.ceil(document.documentElement.scrollTop))
-             if(Math.ceil(document.documentElement.scrollTop)>1383){
-                document.getElementById("slider").style.position="absolute";
-                document.getElementById("slider").style.top="1565px";
+           // console.log(Math.ceil(document.documentElement.scrollTop))
+            let sections = document.getElementsByTagName('section');
+            let lastSection = sections[sections.length-1];
+            let slider =document.getElementById("slider");
+            let top = lastSection.offsetTop+lastSection.offsetHeight-slider.clientHeight;
+             if(Math.ceil(document.documentElement.scrollTop)>top-200){
+                slider.style.position="absolute";
+                slider.style.top=top+"px";
              }else{
-                document.getElementById("slider").style.position="fixed";
-                document.getElementById("slider").style.top="185px";
+                slider.style.position="fixed";
+                slider.style.top="185px";
              }
         }
     }

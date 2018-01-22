@@ -1,7 +1,7 @@
 let data = {
-    "tagName": " 读物",
+    "tagName": "读物Book",
     "id": "a06",
-    "tagImgSrc": "",
+    "tagImgSrc": "http://oquq74tfk.bkt.clouddn.com/18-1-22/53555706.jpg",
     "tags": [{
         "tagName": "Kindle",
         "link": [{

@@ -1,7 +1,7 @@
 let data = {
 	"tagName": " 模板素材",
 	"id": "a05",
-	"tagImgSrc": "",
+	"tagImgSrc": "http://oquq74tfk.bkt.clouddn.com/18-1-22/96964325.jpg",
 	"tags": [{
 		"tagName": "图库",
 		"link": [{

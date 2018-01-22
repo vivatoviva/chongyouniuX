@@ -2,393 +2,6 @@ import React, { Component } from "react";
 import { render } from 'react-dom';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 
-const data = {
-    tagName: '影视欣赏',
-    id:'a01',
-    tagImgSrc:'https://i.loli.net/2018/01/09/5a54b7b52dd89.png',
-    tags: [{
-            tagName: '最新影视',
-            link: [{
-                    name: '疯狂影视欣赏',
-                    site: 'http://ifkdy.com/',
-                    like: true,
-                    import: true
-                },
-                {
-                    name: 'vip视频解析',
-                    site: 'http://goudidiao.com/',
-                    like: false,
-                    import: true
-                },
-                {
-                    name: '降龙影院',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: true
-                },
-                {
-                    name: '降龙影院',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: true
-                },
-                {
-                    name: '胖鸟电影',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: '迅影网',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: 'neets',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: '电影天堂',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: '迅影网',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: true
-                },
-                {
-                    name: 'neets',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: '电影天堂',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: '迅影网',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: 'neets',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: '电影天堂',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: '迅影网',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: 'neets',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: '电影天堂',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: '迅影网',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: 'neets',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: '电影天堂',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: '迅影网',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: true
-                },
-                {
-                    name: 'neets',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: '电影天堂',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: 'neets',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: '电影天堂',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: 'neets',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: '电影天堂',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: 'neets',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: true
-                }
-            ]
-        },
-        {
-            tagName: '在线影院',
-            link: [{
-                    name: '降龙影院',
-                    site: 'http://ifkdy.com/',
-                    like: true,
-                    import: true
-                },
-                {
-                    name: 'vip视频解析',
-                    site: 'http://goudidiao.com/',
-                    like: false,
-                    import: true
-                },
-                {
-                    name: '降龙影院',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: true
-                },
-                {
-                    name: '降龙影院',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: true
-                },
-                {
-                    name: '胖鸟电影',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: '迅影网',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: 'neets',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                },
-                {
-                    name: '电影天堂',
-                    site: 'http://xlyy100.com/',
-                    like: false,
-                    import: false
-                }
-            ]
-        },
-        {
-            tagName: '美剧',
-            tags: [{
-                    name: '全部',
-                    link: [{
-                            name: '流行影院',
-                            site: 'http://ifkdy.com/',
-                            like: true,
-                            import: true
-                        },
-                        {
-                            name: 'vip视频解析',
-                            site: 'http://goudidiao.com/',
-                            like: false,
-                            import: true
-                        },
-                        {
-                            name: '降龙影院',
-                            site: 'http://xlyy100.com/',
-                            like: false,
-                            import: true
-                        },
-                        {
-                            name: '降龙影院',
-                            site: 'http://xlyy100.com/',
-                            like: false,
-                            import: true
-                        },
-                        {
-                            name: '胖鸟电影',
-                            site: 'http://xlyy100.com/',
-                            like: false,
-                            import: false
-                        },
-                        {
-                            name: '迅影网',
-                            site: 'http://xlyy100.com/',
-                            like: false,
-                            import: false
-                        },
-                        {
-                            name: 'neets',
-                            site: 'http://xlyy100.com/',
-                            like: false,
-                            import: false
-                        },
-                        {
-                            name: '电影天堂',
-                            site: 'http://xlyy100.com/',
-                            like: false,
-                            import: false
-                        }
-                    ]
-                },
-                {
-                    name: '下载',
-                    link: [{
-                            name: '降龙影院',
-                            site: 'http://ifkdy.com/',
-                            like: true,
-                            import: true
-                        },
-                        {
-                            name: 'vip视频解析',
-                            site: 'http://goudidiao.com/',
-                            like: false,
-                            import: true
-                        },
-                        {
-                            name: '降龙影院',
-                            site: 'http://xlyy100.com/',
-                            like: false,
-                            import: true
-                        },
-                        {
-                            name: '降龙影院',
-                            site: 'http://xlyy100.com/',
-                            like: false,
-                            import: true
-                        },
-                        {
-                            name: '胖鸟电影',
-                            site: 'http://xlyy100.com/',
-                            like: false,
-                            import: false
-                        },
-                        {
-                            name: '迅影网',
-                            site: 'http://xlyy100.com/',
-                            like: false,
-                            import: false
-                        },
-                        {
-                            name: 'neets',
-                            site: 'http://xlyy100.com/',
-                            like: false,
-                            import: false
-                        },
-                        {
-                            name: '电影天堂',
-                            site: 'http://xlyy100.com/',
-                            like: false,
-                            import: false
-                        },
-                        {
-                            name: 'neets',
-                            site: 'http://xlyy100.com/',
-                            like: false,
-                            import: false
-                        },
-                        {
-                            name: '电影天堂',
-                            site: 'http://xlyy100.com/',
-                            like: false,
-                            import: false
-                        },
-                        {
-                            name: 'neets',
-                            site: 'http://xlyy100.com/',
-                            like: false,
-                            import: false
-                        },
-                        {
-                            name: '电影天堂',
-                            site: 'http://xlyy100.com/',
-                            like: false,
-                            import: false
-                        },
-                        {
-                            name: 'neets',
-                            site: 'http://xlyy100.com/',
-                            like: false,
-                            import: false
-                        },
-                        {
-                            name: '电影天堂',
-                            site: 'http://xlyy100.com/',
-                            like: false,
-                            import: false
-                        },
-                        {
-                            name: 'neets',
-                            site: 'http://xlyy100.com/',
-                            like: false,
-                            import: false
-                        },
-                        {
-                            name: '电影天堂',
-                            site: 'http://xlyy100.com/',
-                            like: false,
-                            import: false
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
-}
-
 class Tag extends Component{
     constructor(props){
         super(props);
@@ -441,7 +54,7 @@ class SiteTag extends Component{
                         }else{
                             className="";
                         }
-                        return <div key={index} data-index={index} className={className} onClick={this.handClick}>{data}</div>
+                        return <div key={data} data-index={index} className={className} onClick={this.handClick}>{data}</div>
                     })
                 }
             </div>
@@ -480,8 +93,9 @@ class Site extends Component{
                 <ul className="clearfix">
                 <CSSTransitionGroup 
                 transitionName="ceshi"
+                transitionLeaveTimeout={1}
                 transitionEnterTimeout={500}
-                transitionLeaveTimeout={200}>
+                >
                     {   
                         links.map((data,index)=>{
                             className="";
@@ -491,7 +105,7 @@ class Site extends Component{
                             if(data.import){
                                 className+=" import"
                             }
-                            return <li key={index}><a className={className}
+                            return <li key={data.name}><a className={className}
                                 href={data.site}>{data.name}</a></li>
                         })
                     }
@@ -530,42 +144,42 @@ class Nav extends Component{
  const data1 = require('../sitedata/data1');
 render(
     <Nav data={data1.default} />,
-    document.getElementById('custom-nav')
+    document.getElementById('life-nav')
 )
 const data2 = require('../sitedata/data2');
 render(
     <Nav data={data2.default} />,
-    document.getElementById('life-nav')
+    document.getElementById('movies-nav')
 )
 const data3 = require('../sitedata/data3');
 render(
     <Nav data={data3.default} />,
-    document.getElementById('movies-nav')
+    document.getElementById('res-nav')
 )
 const data4 = require('../sitedata/data4');
 render(
     <Nav data={data4.default} />,
-    document.getElementById('res-nav')
+    document.getElementById('soft-nav')
 )
 const data5 = require('../sitedata/data5');
 render(
     <Nav data={data5.default} />,
-    document.getElementById('soft-nav')
+    document.getElementById('modul-nav')
 )
 const data6 = require('../sitedata/data6');
 render(
     <Nav data={data6.default} />,
-    document.getElementById('music-nav')
+    document.getElementById('book-nav')
 )
 const data7 = require('../sitedata/data7');
 render(
     <Nav data={data7.default} />,
-    document.getElementById('study-nav')
+    document.getElementById('music-nav')
 )
 const data8 = require('../sitedata/data8');
 render(
     <Nav data={data8.default} />,
-    document.getElementById('music-nav')
+    document.getElementById('study-nav')
 )
 const data9 = require('../sitedata/data9');
 render(

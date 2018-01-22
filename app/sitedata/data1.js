@@ -1,7 +1,7 @@
 let data = {
 	"tagName": " 生活休闲",
 	"id": "a01",
-	"tagImgSrc": "",
+	"tagImgSrc": "http://oquq74tfk.bkt.clouddn.com/18-1-22/58130505.jpg",
 	"tags": [{
 		"tagName": "便携生活",
 		"link": [{

@@ -330,6 +330,9 @@ footer div img{
     cursor: pointer;
     font-size: 13px;
     transition: 50ms ease all;
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+    background-position: 12px 9px;
 }
 #slider div div + div{
     border-top:  1px solid #ECECEC;
@@ -375,12 +378,11 @@ footer div img{
 }
 .ceshi-enter.ceshi-enter-active{
     opacity: 1;
-    transition: opacity 500ms ease;
+    transition: opacity 300ms ease;
 }
 .ceshi-leave{
-    opacity: 1;
+    display: none;
 }
 .ceshi-leave.fade-leave-active{
-    opacity: 0.01;
-    transition: opacity 500ms ease;
+    display: none;
 }
