@@ -138,6 +138,7 @@ class Input extends Component{
                         placeholder={this.props.desc}
                         onChange={this.handInputValue}
                         onBlur={this.handBlur}
+                        autocomplete="no"
                         />
                         <ul>
                             {   

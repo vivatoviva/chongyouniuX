@@ -6,9 +6,9 @@ import styled from 'styled-components';
 
 import './css/index.css'
 
-import './component/Head';
-import './component/Search'
-import './component/HotNav'
-import './component/Nav'
-import './component/Foot'
+import './component/Head.jsx';
+import './component/Search.jsx'
+import './component/HotNav.jsx'
+import './component/Nav.jsx'
+import './component/Foot.jsx'
 import './component/Slider.jsx'

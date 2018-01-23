@@ -11,17 +11,23 @@ class HotNav extends Component{
         {
             this.props.datas.map((data,index)=>{
                 if(data.imgurl&&index<=7){
-                    return <li key={index}><a href={data.href} 
-                                                style={{"backgroundImage":data.imgurl}}
-                                                target="_blank">
-                                                <img src={data.imgurl} />
-                                                </a></li>
+                    return (
+                        <li key={index}>
+                            <a href={data.href} 
+                                style={{"backgroundImage":data.imgurl}}
+                                target="_blank">
+                                <img src={data.imgurl} />
+                            </a>
+                        </li>
+                        )
                 }
             })
         }
         </ul>)
     }
 }
+
+
 render(
     <HotNav datas={data}></HotNav>,
     document.getElementById('hot-nav')
