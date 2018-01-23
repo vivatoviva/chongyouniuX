@@ -1,91 +1,9 @@
 import React,{Component}from "react";
 import ReactDom,{render} from 'react-dom';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
+import Location from '../sitedata/slider'
 
-//导航资料
-const Location = [
-    {
-        name:'搜本站',
-        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/93889582.jpg',
-        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/93889582.jpg',
-        type:'eject'
-    },
-    {
-        name:'生活',
-        id:'a01',
-        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/83954840.jpg',
-        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/83954840.jpg',
-        type:'location'
-    },
-    {
-        name:'影视',
-        id:'a02',
-        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/97521614.jpg',
-        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/6332105.jpg',
-        type:'location'    
-    },
-    {
-        name:'资源',
-        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/73244261.jpg',
-        id:'a03',
-        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/73244261.jpg',
-        type:'location'  
-    },
-    {
-        name:'软件',
-        id:'a04',
-        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/12223540.jpg',
-        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/12223540.jpg',
-        type:'location'  
-    },
-    {
-        name:'模板',
-        id:'a05',
-        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/16869405.jpg',
-        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/16869405.jpg',
-        type:'location'  
-    },
-    {
-        name:'读物',
-        id:'a06',
-        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/67913173.jpg',
-        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/67913173.jpg',
-        type:'location'   
-    },
-    {
-        name:'音乐',
-        id:'a07',
-        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/25387805.jpg',
-        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/25387805.jpg',
-        type:'location'    
-    },
-    {
-        name:'学习',
-        id:'a08',
-        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/38882213.jpg',
-        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/38882213.jpg',
-        type:'location'  
-    },
-    {
-        name:'导航',
-        id:'a09',
-        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/80021391.jpg',
-        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/80021391.jpg',
-        type:'location'   
-    },
-    {
-        name:'关于',
-        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/15951409.jpg',
-        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/15951409.jpg',
-        type:'eject'
-    },
-    {
-        name:'留言',
-        bgimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/25033702.jpg',
-        hoverimg:'http://oquq74tfk.bkt.clouddn.com/18-1-22/25033702.jpg',
-        type:'eject'
-    }
-];
+
 const modal = document.getElementById('modal');
 //将一个组件渲染成页面中间
 class Eject extends Component{
@@ -148,6 +66,11 @@ class LocationButton extends Component{
            }
     }
     handEjectClick(bol=true){
+        if(bol){
+            modal.className='show'
+        }else{
+            modal.className='hide'
+        }
         this.setState({
             showEject:bol
         })
@@ -159,13 +82,9 @@ class LocationButton extends Component{
         const now = this;
         //自己模板要加的内容
         const eject = this.state.showEject?(
-            <CSSTransitionGroup
-                
-            >
                 <Eject hand={this.handEjectClick}>
                     <div className="form">hah</div>
                 </Eject>
-            </CSSTransitionGroup>
         ):null;
         const {id,name,type,bgimg,hoverimg}=this.props.link;
         //定位标签
@@ -176,7 +95,17 @@ class LocationButton extends Component{
             //弹出层标签
         }else if(type=="eject"){
             return (
-                <div data-id={id} onClick={this.handEjectClick}  style={{backgroundImage:`url(${bgimg})`}}>{name}{eject}</div>
+                <div data-id={id} 
+                    onClick={this.handEjectClick}  
+                    style={{backgroundImage:`url(${bgimg})`}}>
+                    {name}
+                    <CSSTransitionGroup
+                        transitionName="eject"
+                        transitionLeaveTimeout={500}
+                        transitionEnterTimeout={500}>
+                        {eject}
+                    </CSSTransitionGroup>
+                </div>
             )
         }
     }

@@ -28,6 +28,11 @@ body {
     width:1000px;
     margin:0 auto;
 }
+#search input{
+    font-family: '微软雅黑';
+    font-size: 14px;
+
+}
 .left {
     float: left;
     margin-top: 10px;
@@ -348,6 +353,7 @@ footer div img{
 #modal{
     position: relative;
     z-index: 151645465;
+    transition: opacity 100ms ease;
 }
 #modal>div{
         background-color: rgba(0, 0, 0, 0.452);
@@ -359,6 +365,14 @@ footer div img{
         display: flex;
         align-items: center;
         justify-content: center;
+        opacity: 1;
+}
+/* 进入动画 */
+#modal.show{
+    opacity: 1;
+}
+#modal.hide{
+    opacity: 0;
 }
 .form{
     width: 900px;
@@ -374,15 +388,36 @@ footer div img{
     测试动画部分
 */
  .ceshi-enter{
-    opacity: 0.01;
+   opacity: 0.1;
 }
 .ceshi-enter.ceshi-enter-active{
     opacity: 1;
     transition: opacity 300ms ease;
 }
+
 .ceshi-leave{
     display: none;
 }
 .ceshi-leave.fade-leave-active{
     display: none;
+}
+
+/*
+    弹出层样式设置
+*/
+.eject-enter{
+    opacity: 0.01;
+    transform: scale(.8);
+}
+.eject-enter.eject-enter-active{
+    opacity: 1;
+    transform: scale(1);
+    transition: all 500ms ease;
+}
+.eject-leave{
+    opacity: 1;
+}
+.eject-leave.eject-leave-active{
+    opacity: 0;
+    transition: opacity 100ms ease;
 }
