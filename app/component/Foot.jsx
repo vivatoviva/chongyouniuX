@@ -3,31 +3,20 @@ import {render} from 'react-dom';
 import data from '../sitedata/footdata'
 
 
-function Title({title}){
-    return  (
-            <p>{title}</p>
-    )
-}
-
-const Link= ({links}) => {
-    return (
-        <ul>
-            {
-                links.map((data,index)=>{
-                    return <li key={index} ><a href={data.url} target="_blank">{data.name}</a></li>
-                })
-            }
-        </ul>
-    )
-}
-
-const Ul =({data}) => {
+const SiteLink =({data}) => {
             return (
-            <div>
-                <Title title={data.name}/>
-                <Link links={data.link}/>
-            </div>
-        )
+                <div>
+                    
+                    <p>{data.name}</p>
+                    <ul>
+                        {
+                            data.link.map((data,index)=>{
+                                return <li key={index} ><a href={data.url} target="_blank">{data.name}</a></li>
+                            })
+                        }
+                    </ul>
+                </div>
+            )
 }
 class Foot extends Component{
     render(){
@@ -35,7 +24,7 @@ class Foot extends Component{
             <div className="clearfix">
                  {
                     this.props.data.map((data,index)=>{
-                      return <Ul data={data} key={index}/>
+                      return <SiteLink data={data} key={index}/>
                     })
                  }
 

@@ -387,7 +387,7 @@ footer div img{
     测试动画部分
 */
  .ceshi-enter{
-   opacity: 0.1;
+    opacity: 0.1;
 }
 .ceshi-enter.ceshi-enter-active{
     opacity: 1;

@@ -6,6 +6,10 @@ import styled from 'styled-components';
 
 import './css/index.css'
 
+/*
+
+*/
+
 import './component/Head.jsx';
 import './component/Search.jsx'
 import './component/HotNav.jsx'

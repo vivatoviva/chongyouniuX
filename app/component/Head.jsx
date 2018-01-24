@@ -2,7 +2,6 @@ import React,{Component}from "react";
 import styled, { css } from 'styled-components';
 import {render} from 'react-dom';
 
-
 class Categories extends Component{
     constructor(props){
         super(props);

@@ -20,20 +20,17 @@ class Type extends Component{
 class Typelist extends Component{
     constructor(props){
         super(props);
-        this.state=({
-            index:0
-        });
         this.handleClick=this.handleClick.bind(this);
     }
     handleClick(index){
-        this.setState({index});
         this.props.handTypeIndex(index);
         this.props.inputFocus();
     }
     render(){
         let className;
+        
         return (this.props.data.map((data,index)=>{
-            if(this.state.index==index){
+            if(this.props.index==index){
                 className="now"
             }else{
                 className=""
@@ -66,6 +63,18 @@ class Input extends Component{
             })
         }
     }
+    componentDidMount(){
+        this.props.inputFocus();
+    }
+    componentDidUpdate(){
+        this.props.inputFocus();
+        const length = this.input.value.length;
+       
+        if(this.state.index!==-1){
+            const length = this.input.value.length-1;
+            this.input.setSelectionRange(-1,-1)
+        }
+    }
     //输入框输入的监听函数
     handInputValue(e){
         this.props.click(e.target.value);
@@ -76,11 +85,10 @@ class Input extends Component{
     }
     //选择tip是监听函数
     handTipClick(e){
-        console.log(e.target.innerHTML)
+        console.log(e.target.innerHTML);
         this.props.click(e.target.innerHTML);
         this.setState({
-            index:-1,
-            display:true
+            index:-1
         })
     }
     //键盘监听函数
@@ -100,6 +108,8 @@ class Input extends Component{
                 break;
             }
             case 38:{
+                //向上点击
+                
                 if(this.state.tips.length==0){
                     break;
                 }
@@ -134,27 +144,27 @@ class Input extends Component{
             <div  onKeyDown={this.handKeyDown}>
                  <input value={this.props.value} 
                         type="text" 
-                        ref={this.props.inputRef}
+                        ref={(input)=>{this.input=input;this.props.inputRef(input)}}
                         placeholder={this.props.desc}
                         onChange={this.handInputValue}
                         onBlur={this.handBlur}
-                        autocomplete="no"
+                        autoComplete="no"
                         />
                         <ul>
                             {   
-                                    this.state.tips.map((tip,index)=>{
-                                        if(this.state.index==index){
-                                        style={
-                                            "backgroundColor":"#e2e2e2"
-                                        }
-                                        }else{
-                                            style={}
-                                        }
-                                        if(this.state.display){
-                                            return <li style={style} key={tip} onClick={this.handTipClick}>{tip}</li>
-                                        }
-                                        
-                                    })
+                                this.state.tips.map((tip,index)=>{
+                                    if(this.state.index==index){
+                                    style={
+                                        "backgroundColor":"#e2e2e2"
+                                    }
+                                    }else{
+                                        style={}
+                                    }
+                                    if(this.state.display){
+                                        return <li style={style} key={tip} onClick={this.handTipClick}>{tip}</li>
+                                    }
+                                    
+                                })
                             }
                         </ul>
             </div>
@@ -197,9 +207,10 @@ class SearchInput extends Component{
         this.handInput = this.handInput.bind(this);
         this.handTypeChance = this.handTypeChance.bind(this);
         this.submit = this.submit.bind(this);
+        //此处index控制当前网站选项
         this.state=({
             value:"",
-            index:"0"
+            index:0
         })
     }
     handInput(value){
@@ -208,12 +219,11 @@ class SearchInput extends Component{
         })
     }
     handTypeChance(index){
-        this.setState({
-            index
-        })
+        this.setState({index})
         this.props.inputFocus();
         this.submit({value:this.state.value,index});
     }
+    //搜索提交控制函数
     submit({value,index}=this.state){
         const link = this.props.link[index].link;
         if(value!=''){
@@ -232,11 +242,11 @@ class SearchInput extends Component{
         return (
             <div>  
                 <Input value={this.state.value}
-                     desc={this.props.desc} 
-                        click={this.handInput} 
-                        submit={this.submit} 
-                        inputRef={this.props.inputRef}
-                        inputFocus={this.inputFocus}/>
+                       desc={this.props.desc} 
+                       click={this.handInput} 
+                       submit={this.submit} 
+                       inputRef={this.props.inputRef}
+                       inputFocus={this.props.inputFocus}/>
                 <Inputlink link={this.props.link}
                            index={this.state.index}
                            change={this.handTypeChance}/>
@@ -250,21 +260,19 @@ class Search extends Component{
     constructor(props){
         super(props);
         this.inputFocus=this.inputFocus.bind(this);
-        this.state=({
-            index:0
-        })
+        //控制当前搜索的板块
+        this.state=({index:0})
         this.handTypeIndex=this.handTypeIndex.bind(this);
     }
     handTypeIndex(index){
-        this.setState({
-            index
-        })
+        this.setState({index})
     }
     //input焦点函数
     inputFocus(){
         this.input.focus();
     }
     componentDidMount(){
+        //组件加载完成，立刻定位光标
         this.inputFocus();
     }
     render(){
@@ -272,15 +280,16 @@ class Search extends Component{
             <div className="clearfix">
                 <div className="left">
                     <Typelist handTypeIndex={this.handTypeIndex} 
-                             data={this.props.data}
-                             inputFocus={this.inputFocus}/>
+                              index = {this.state.index}
+                              data={this.props.data}
+                              inputFocus={this.inputFocus}/>
                 </div>
                 <div className='right'>
                     <SearchInput desc={this.props.data[this.state.index].desc}
-                    link={this.props.data[this.state.index].link}
-                    inputRef={(input)=>this.input=input}
-                    inputFocus={this.inputFocus}
-                    ></SearchInput>
+                                 link={this.props.data[this.state.index].link}
+                                 inputRef={(input)=>this.input=input}
+                                 inputFocus={this.inputFocus}
+                    />
                 </div>     
             </div>
         );

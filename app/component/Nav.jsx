@@ -9,9 +9,7 @@ class Tag extends Component{
     }
     handClick(e){
         const index = e.target.getAttribute('data-key');
-        if(index!=0){
-            this.props.handIndex(index-1);
-        }
+        if(index!=0){this.props.handIndex(index-1)}
     }
     render(){
         let style={};
@@ -20,14 +18,20 @@ class Tag extends Component{
                 <ul className="clearfix">
                     {
                         this.props.data.map((data,index)=>{
-                            style={};
-                            if(index==0){
+                            let style={};
+                            if(index===0){
                                 style={backgroundImage:`url(${data.tagImgSrc}`};
                             }
-                            if(index==this.props.index+1){
+                            if(index===this.props.index+1){
                                 style.color="red";
                             }
-                            return <li id={data.tagId} key={data.tagName} data-key={index} style={style} onClick={this.handClick}>{data.tagName}</li>
+                            return <li id={data.tagId} 
+                                        key={data.tagName} 
+                                        data-key={index} 
+                                        style={style} 
+                                        onClick={this.handClick}>
+                                        {data.tagName}
+                                    </li>
                         })
                     }
                 </ul>  
@@ -68,48 +72,47 @@ class Site extends Component{
         this.handIndex=this.handIndex.bind(this);
     }
     handIndex(index){
-        this.setState({
-            index
-        })
+        this.setState({index})
     }
     render(){
         let className;//用于存放渲染classname
         let links=[];let tags=[];
-        if(this.props.tags.link!=undefined){
+        if(this.props.tags.link){
+            /*如果是不含有子标签的链接 */
             links=this.props.tags.link;   
         }
-        if(this.props.tags.tags!=undefined){
+        if(this.props.tags.tags){
+            /* 含有子标签链接，分两步渲染 */
             this.props.tags.tags.map(data=>{
                 tags.push(data.name);
             })
             links=this.props.tags.tags[this.state.index].link;
         }
         return (
-        <div className="site">
-            {  
-                !tags.length?"":(<SiteTag tags={tags} index={this.state.index}  handIndex={this.handIndex}></SiteTag>)
-            }
-            
+            <div className="site">
+                {  
+                    !tags.length?"":(<SiteTag tags={tags} index={this.state.index}  handIndex={this.handIndex}></SiteTag>)
+                }
                 <ul className="clearfix">
-                <CSSTransitionGroup 
-                transitionName="ceshi"
-                transitionLeaveTimeout={1}
-                transitionEnterTimeout={500}
-                >
-                    {   
-                        links.map((data,index)=>{
-                            className="";
-                            if(data.like){
-                                className+=" like";
-                            }
-                            if(data.import){
-                                className+=" import"
-                            }
-                            return <li key={data.name}><a className={className}
-                                href={data.site}>{data.name}</a></li>
-                        })
-                    }
-                </CSSTransitionGroup>
+                    <CSSTransitionGroup 
+                    transitionName="ceshi"
+                    transitionLeaveTimeout={0.1}
+                    transitionEnterTimeout={500}
+                    >
+                        {   
+                            links.map((data,index)=>{
+                                className="";
+                                if(data.like){
+                                    className+=" like";
+                                }
+                                if(data.import){
+                                    className+=" import"
+                                }
+                                return <li key={data.name}><a className={className}
+                                    href={data.site}>{data.name}</a></li>
+                            })
+                        }
+                    </CSSTransitionGroup>
                 </ul>
             </div>
         )
@@ -122,12 +125,11 @@ class Nav extends Component{
         this.handIndex=this.handIndex.bind(this);
     }
     handIndex(index){
-        this.setState({
-            index
-        })
+        this.setState({index})
     }
     render(){
         const tagData=[];
+        //根据总数据找出头部数据
         tagData.push({tagName:this.props.data.tagName,tagImgSrc:this.props.data.tagImgSrc,tagId:this.props.data.id});
         this.props.data.tags.map(data=>{
             tagData.push({tagName:data.tagName})
@@ -141,7 +143,8 @@ class Nav extends Component{
     }
 }
 
- const data1 = require('../sitedata/data1');
+
+const data1 = require('../sitedata/data1');
 render(
     <Nav data={data1.default} />,
     document.getElementById('life-nav')
