@@ -67,7 +67,8 @@ class Input extends Component{
         this.props.inputFocus();
     }
     componentDidUpdate(){
-        this.props.inputFocus();
+        //input更新后立即刷新
+        //this.props.inputFocus();
         const length = this.input.value.length;
        
         if(this.state.index!==-1){
@@ -208,9 +209,14 @@ class SearchInput extends Component{
         this.handTypeChance = this.handTypeChance.bind(this);
         this.submit = this.submit.bind(this);
         //此处index控制当前网站选项
+        if(!getCookie('pos')){
+            setCookie('pos',"0@0@0@0@0@0@0@0")
+        }
+        this.indexarr = getCookie('pos').split('@');
+        console.log(this.indexarr)
         this.state=({
             value:"",
-            index:0
+            index:this.indexarr[this.props.index]
         })
     }
     handInput(value){
@@ -219,6 +225,9 @@ class SearchInput extends Component{
         })
     }
     handTypeChance(index){
+        this.indexarr[this.props.index] = index;
+        console.log(this.indexarr.join("@"))
+        setCookie("pos",this.indexarr.join("@"))
         this.setState({index})
         this.props.inputFocus();
         this.submit({value:this.state.value,index});
@@ -261,10 +270,15 @@ class Search extends Component{
         super(props);
         this.inputFocus=this.inputFocus.bind(this);
         //控制当前搜索的板块
-        this.state=({index:0})
+        if(!getCookie('plate')){
+            setCookie('plate',5);
+        }
+        console.log(getCookie('plate'))
+        this.state=({index:Number(getCookie('plate'))})
         this.handTypeIndex=this.handTypeIndex.bind(this);
     }
     handTypeIndex(index){
+        setCookie('plate',index);
         this.setState({index})
     }
     //input焦点函数
@@ -287,6 +301,7 @@ class Search extends Component{
                 <div className='right'>
                     <SearchInput desc={this.props.data[this.state.index].desc}
                                  link={this.props.data[this.state.index].link}
+                                 index={this.state.index}
                                  inputRef={(input)=>this.input=input}
                                  inputFocus={this.inputFocus}
                     />
@@ -294,6 +309,35 @@ class Search extends Component{
             </div>
         );
     }
+
+}
+function setCookie(name,value){
+    let day = 30;
+    let exp = new Date();
+    exp.setTime(exp.getTime()+day*24*60*60*1000);
+    document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString();
+    return true;
+}
+function getCookie(name){
+    let strcookies = document.cookie;
+    let cookies = strcookies.split(';');
+    for(let cookie of cookies){
+        let cookielist = cookie.split("=");
+        if(cookielist[0].trim()==name){
+            return cookielist[1];
+        }
+    }
+    return false;
+}
+function delCookie(name){
+    var exp = new Date();
+    exp.setTime(exp.getTime()-1);
+    var cookieValue = getCookie(name);
+    if(cookieValue!=null){
+        document.setCookie = `${name}=${escape(cookieValue)};expires=${exp.toGMTString()}`
+        return true;
+    }
+    return false;
 }
 render(
     <Search data={data}/>,
