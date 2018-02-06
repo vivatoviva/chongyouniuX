@@ -1,3 +1,5 @@
+const uglify = require('uglifyjs-webpack-plugin');
+
 module.exports = {
     entry:  __dirname + "/app/main.js",//已多次提及的唯一入口文件
     output: {
@@ -32,5 +34,16 @@ module.exports = {
     　　　　　　loader: 'url-loader?limit=8192&name=images/[hash:8].[name].[ext]'
     　　　　}
         ]
-    }
+    },
+    plugins:[
+        new uglify(
+            {
+            uglifyOptions:{
+                mangle:{
+                    reserved:["abc","first","lottery"]
+                },
+                compress:true
+            }
+        })
+    ]
   }

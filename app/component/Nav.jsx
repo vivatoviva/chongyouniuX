@@ -96,9 +96,9 @@ class Site extends Component{
                 <ul className="clearfix">
                     <CSSTransitionGroup 
                     transitionName="ceshi"
-                    transitionLeaveTimeout={0.1}
+                    transitionLeaveTimeout={0.000000000001}
                     transitionEnterTimeout={500}
-                    >
+                    ></CSSTransitionGroup>
                         {   
                             links.map((data,index)=>{
                                 className="";
@@ -112,7 +112,7 @@ class Site extends Component{
                                     href={data.site}>{data.name}</a></li>
                             })
                         }
-                    </CSSTransitionGroup>
+                    
                 </ul>
             </div>
         )

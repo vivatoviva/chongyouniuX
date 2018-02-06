@@ -3,6 +3,7 @@ import {render} from 'react-dom';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup'
 import data from '../sitedata/searchdata'
 
+
 class Type extends Component{
     constructor(props){
         super(props);
